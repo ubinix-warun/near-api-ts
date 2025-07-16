@@ -1,0 +1,12 @@
+{
+  "name": "near-api-ts",
+  "private": true,
+  "packageManager": "pnpm@10.0.0",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "devDependencies": {
+    "turbo": "^2.5.4"
+  }
+}
