@@ -9,5 +9,8 @@
     "prepublishOnly": "pnpm run build"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@near-api-ts/jsonrpc-types": "workspace:*"
+  }
 }

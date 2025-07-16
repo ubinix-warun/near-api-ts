@@ -65,7 +65,7 @@ import type {
   JsonRpcResponseForRpcStatusResponseAndRpcError,
   JsonRpcResponseForRpcTransactionResponseAndRpcError,
   JsonRpcResponseForRpcValidatorResponseAndRpcError,
-} from "../../../../jsonrpc-types/src/api/generated/model";
+} from "@near-api-ts/jsonrpc-types/dist/model";
 
 import { customInstance } from "../../client";
 import type { ErrorType } from "../../client";
