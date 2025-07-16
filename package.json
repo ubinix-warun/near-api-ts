@@ -2,11 +2,27 @@
   "name": "near-api-ts",
   "private": true,
   "packageManager": "pnpm@10.0.0",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "check-types": "turbo run check-types",
+    "generate-api": "orval"
+  },
   "workspaces": [
     "packages/*",
     "apps/*"
   ],
   "devDependencies": {
-    "turbo": "^2.5.4"
+    "@tanstack/react-query": "^5.83.0",
+    "axios": "^1.10.0",
+    "jest": "^30.0.4",
+    "orval": "^7.10.0",
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.4",
+    "zod": "^4.0.5"
   }
 }
