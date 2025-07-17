@@ -1,0 +1,39 @@
+name: scheduled-pr.yml
+on:
+  schedule:
+    - cron: '0 7,19 * * *' # at 7am and 7pm every day
+#    - cron: '*/5 * * * *' # every 5 minutes
+##    - cron: '*/30 * * * *' # every 30 minutes
+  workflow_dispatch:
+
+jobs:
+  check-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+
+      - name: Checkout source repository branch
+        uses: actions/checkout@v4
+        with:
+          repository: near/nearcore
+          ref: master
+          path: nearcore-repo
+#          repository: ubinix-warun/nearcore
+#          ref: poc-ci-pipeline
+#          path: nearcore-repo
+
+      - name: Check for updates
+        id: check
+        run: |
+          echo "Checking for updates..."
+          cd nearcore-repo
+          git rev-parse HEAD > ../latest_source_commit
+          echo "Latest commit in source repository:"
+          if [ -f ../last_checked_commit ]; then cat ../last_checked_commit; fi
+          echo "Last checked commit:"
+          if [ -f ../latest_source_commit ]; then cat ../latest_source_commit; fi
+          mv latest_source_commit last_checked_commit
+          
+          
+          
