@@ -29,6 +29,7 @@ jobs:
         with:
           name: last_checked_commit
           path: .
+        continue-on-error: true
 
       - name: Check for updates
         id: check
