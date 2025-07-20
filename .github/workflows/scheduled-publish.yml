@@ -41,7 +41,7 @@ jobs:
           if [ -f ../last_checked_commit ]; then cat ../last_checked_commit; fi
           echo "Last checked commit:"
           if [ -f ../latest_source_commit ]; then cat ../latest_source_commit; fi
-          mv latest_source_commit last_checked_commit
+          mv ../latest_source_commit ../last_checked_commit
           
       # Upload updated artifact at end
       - name: Upload last_checked_commit
