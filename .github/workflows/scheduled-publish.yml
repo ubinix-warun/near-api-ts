@@ -23,12 +23,11 @@ jobs:
 #          ref: poc-ci-pipeline
 #          path: nearcore-repo
 
-      # Download artifact at start
-      - name: Download last_checked_commit
-        uses: actions/download-artifact@v4
+      - name: Restore last_checked_commit
+        uses: actions/cache@v4
         with:
-          name: last_checked_commit
-          path: .
+          path: last_checked_commit
+          key: last-checked-commit
         continue-on-error: true
 
       - name: Check for updates
@@ -42,10 +41,27 @@ jobs:
           echo "Last checked commit:"
           if [ -f ../latest_source_commit ]; then cat ../latest_source_commit; fi
           mv ../latest_source_commit ../last_checked_commit
-          
-      # Upload updated artifact at end
-      - name: Upload last_checked_commit
-        uses: actions/upload-artifact@v4
+
+      - name: Cache last_checked_commit
+        uses: actions/cache@v4
         with:
-          name: last_checked_commit
           path: last_checked_commit
+          key: last-checked-commit
+
+#       ----------
+#       Work on same job id
+#       ----------------
+#      # Download artifact at start
+#      - name: Download last_checked_commit
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: last_checked_commit
+#          path: .
+#        continue-on-error: true
+#
+#      # Upload updated artifact at end
+#      - name: Upload last_checked_commit
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: last_checked_commit
+#          path: last_checked_commit
